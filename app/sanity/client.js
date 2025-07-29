@@ -5,10 +5,11 @@ export const client = createClient({
   projectId: "dga4rl5k",
   dataset: "production",
   apiVersion: "2024-01-01",
+  token: process.env.SANITY_WRITE_TOKEN,
   useCdn: false,
 });
 
-const builder = imageUrlBuilder(client);
+export const builder = imageUrlBuilder(client);
 
 export function urlFor(source) {
   return builder.image(source);

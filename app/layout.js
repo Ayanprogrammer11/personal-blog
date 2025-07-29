@@ -1,78 +1,72 @@
-// app/layout.js
-import "./globals.css";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import "./globals.css"; // <-- fixed import
+import Navbar from "./components/Navbar";
+import { auth } from "./_lib/auth";
+import SessionProvider from "./components/SessionProvider";
 
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
-  weight: ["400", "500", "600"],
+  weight: "variable",
 });
-
-const playfair = Playfair_Display({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-mono",
   display: "swap",
-  weight: ["400", "700"],
+  weight: "variable",
 });
 
-// 🔥 Global metadata
 export const metadata = {
-  title: {
-    default: "Think Different — Ayan’s Blog",
-    template: "%s | Ayan’s Blog",
-  },
+  title: "Your Blog Name",
   description:
-    "Ayan’s personal blog: raw insights, deep ideas, and unique takes on life, tech, and creativity.",
-  keywords: [
-    "ayan",
-    "personal blog",
-    "deep thinking",
-    "writing",
-    "technology",
-    "philosophy",
-  ],
-  metadataBase: new URL("https://yourdomain.com"), // replace with real domain
+    "Personal blog about technology, life, and everything in between",
+  authors: [{ name: "Your Name" }],
+  keywords: ["blog", "technology", "personal", "writing"],
   openGraph: {
-    title: "Think Different — Ayan’s Blog",
-    description:
-      "Explore ideas that challenge the status quo. Join thousands who think beyond the ordinary.",
-    url: "https://yourdomain.com",
-    siteName: "Ayan’s Blog",
-    images: [
-      {
-        url: "/opengraph-image.jpg", // should exist in /public
-        width: 1200,
-        height: 630,
-        alt: "Ayan’s Blog — Think Different",
-      },
-    ],
-    locale: "en_US",
     type: "website",
+    locale: "en_US",
+    url: "https://yourdomain.com",
+    title: "Your Blog Name",
+    description: "Personal blog...",
+    siteName: "Your Blog Name",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Think Different — Ayan’s Blog",
-    description:
-      "Explore ideas that challenge the status quo. Join thousands who think beyond the ordinary.",
-    creator: "@yourhandle", // optional
-    images: ["/opengraph-image.jpg"],
+    title: "Your Blog Name",
+    description: "Personal blog...",
+    creator: "@yourusername",
   },
-  themeColor: "#000000",
   robots: {
     index: true,
     follow: true,
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await auth();
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`${playfairDisplay.variable} ${inter.variable} ${jetBrainsMono.variable}`}
+    >
+      <body className="font-sans antialiased">
+        <Navbar />
+        <SessionProvider session={session}>{children}</SessionProvider>
+      </body>
     </html>
   );
 }

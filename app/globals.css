@@ -1,25 +1,151 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #000;
-  --color-foreground: #f9fafb;
-  --color-primary: #e4e4e7;
-  --font-sans: "Inter", sans-serif;
-  --font-heading: "Playfair Display", serif;
-  --spacing: 0.25rem;
+  /* Brand Colors */
+  --color-brand-50: #fef7f0;
+  --color-brand-100: #fdeee0;
+  --color-brand-200: #fad9c1;
+  --color-brand-300: #f6c297;
+  --color-brand-400: #f1a36b;
+  --color-brand-500: #ed8c4a;
+  --color-brand-600: #df7635;
+  --color-brand-700: #b85f2e;
+  --color-brand-800: #934d2c;
+  --color-brand-900: #764228;
+
+  /* Sage Green */
+  --color-sage-50: #f7f8f7;
+  --color-sage-100: #e8ebe8;
+  --color-sage-200: #d1d7d1;
+  --color-sage-300: #adb8ad;
+  --color-sage-400: #849384;
+  --color-sage-500: #677767;
+  --color-sage-600: #526152;
+  --color-sage-700: #444f44;
+  --color-sage-800: #394139;
+  --color-sage-900: #323832;
+
+  /* Warm Cream */
+  --color-cream-50: #fefcf9;
+  --color-cream-100: #fdf8f1;
+  --color-cream-200: #fbf0e1;
+  --color-cream-300: #f7e4c7;
+  --color-cream-400: #f1d4a2;
+  --color-cream-500: #ebc274;
+  --color-cream-600: #e4b154;
+  --color-cream-700: #d19b3f;
+  --color-cream-800: #a67c35;
+  --color-cream-900: #846530;
+
+  /* Font Families */
+  --font-family-serif: var(--font-display), "Playfair Display", Georgia, serif;
+  --font-family-sans: var(--font-body), "Inter", system-ui, sans-serif;
+  --font-family-mono: var(--font-mono), "JetBrains Mono", Consolas, monospace;
 }
 
-/* Base resets */
+/* --------------------------------------------------------
+   Base Layer: Browser defaults and resets
+   -------------------------------------------------------- */
 @layer base {
+  html {
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
   body {
-    font-family: var(--font-sans);
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    @apply bg-cream-50 text-sage-900;
   }
 
   h1,
   h2,
-  h3 {
-    font-family: var(--font-heading);
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif text-brand-800;
+  }
+
+  a {
+    @apply text-brand-600 hover:text-brand-700 transition-colors;
+  }
+
+  p {
+    @apply mb-4;
+  }
+  ul,
+  ol {
+    @apply mb-4 pl-6;
+  }
+}
+/*  */
+
+/* --------------------------------------------------------
+   Components Layer: Reusable patterns
+   -------------------------------------------------------- */
+@layer components {
+  .container {
+    @apply mx-auto px-4 md:px-8 max-w-4xl;
+  }
+
+  .btn {
+    @apply inline-block font-semibold rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  .btn-primary {
+    @apply inline-block font-semibold rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 bg-brand-500 text-cream-50 py-2 px-4 hover:bg-brand-600 focus:ring-brand-400;
+  }
+  .btn-secondary {
+    @apply inline-block font-semibold rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 bg-sage-500 text-cream-50 py-2 px-4 hover:bg-sage-600 focus:ring-sage-400;
+  }
+
+  .card {
+    @apply bg-cream-50 border border-sage-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow;
+  }
+}
+
+/* --------------------------------------------------------
+   Utilities: Custom helpers
+   -------------------------------------------------------- */
+/* Add these to your existing global.css file */
+
+@layer utilities {
+  /* Counter utilities for numbered lists */
+  .counter-reset-item {
+    counter-reset: item;
+  }
+
+  .counter-increment-item {
+    counter-increment: item;
+  }
+
+  /* Enhanced text gradient */
+  .text-brand-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-400),
+      var(--color-brand-600),
+      var(--color-sage-600)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Backdrop blur fallback */
+  @supports not (backdrop-filter: blur(12px)) {
+    .backdrop-blur-md {
+      background-color: rgba(254, 252, 249, 0.95);
+    }
+    .backdrop-blur-sm {
+      background-color: rgba(254, 252, 249, 0.85);
+    }
+  }
+
+  /* Smooth scrolling for mobile */
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 }
