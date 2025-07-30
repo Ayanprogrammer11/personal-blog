@@ -2,7 +2,7 @@
 
 // app/_components/comments/DeleteCommentDialog.jsx
 import { useState } from "react";
-import { deleteComment } from "../../_lib/actions/comment-actions";
+import { deleteComment } from "@/app/features/interaction/actions/comment-actions";
 import { Trash2, AlertTriangle, X } from "lucide-react";
 
 export default function DeleteCommentDialog({ comment, onCancel }) {

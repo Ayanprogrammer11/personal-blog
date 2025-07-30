@@ -2,7 +2,7 @@
 
 // app/_components/comments/CommentForm.jsx
 import { useState, useRef } from "react";
-import { createComment } from "../../_lib/actions/comment-actions";
+import { createComment } from "@/app/features/interaction/actions/comment-actions";
 import { Send, X } from "lucide-react";
 
 export default function CommentForm({

@@ -1,7 +1,7 @@
 "use client";
 
 import { Bookmark } from "lucide-react";
-import { toggleBookmark } from "../_lib/actions/bookmark-actions";
+import { toggleBookmark } from "@/app/features/interaction/actions/bookmark-actions";
 
 function BookmarkBlog({ blogId }) {
   return (

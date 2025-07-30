@@ -2,7 +2,7 @@
 
 // app/_components/comments/EditCommentForm.jsx
 import { useState, useRef, useEffect } from "react";
-import { updateComment } from "../../_lib/actions/comment-actions";
+import { updateComment } from "@/app/features/interaction/actions/comment-actions";
 import { Save, X } from "lucide-react";
 
 export default function EditCommentForm({

@@ -1,7 +1,7 @@
 "use server";
 
-import { auth } from "../auth";
-import prisma from "../prisma";
+import prisma from "@/app/_lib/prisma";
+import { auth } from "@/app/_lib/auth";
 
 export async function toggleBookmark(blogId, blogSlug) {
   const session = await auth();

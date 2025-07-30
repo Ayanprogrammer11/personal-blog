@@ -1,9 +1,9 @@
 // app/_lib/actions/like-actions.js
 "use server";
 
-import { auth } from "../auth";
+import { auth } from "@/app/_lib/auth";
 
-import prisma from "../prisma";
+import prisma from "@/app/_lib/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function toggleLike(postId, blogSlug) {

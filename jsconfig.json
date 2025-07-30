@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@features/*": ["./app/features/*"],
+      "@shared/*": ["./app/shared/*"]
     }
   }
 }
