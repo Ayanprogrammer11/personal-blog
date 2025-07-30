@@ -3,14 +3,16 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { builder, client } from "@/app/sanity/client";
-import CodeBlockRenderer from "@/app/components/CodeBlockRenderer";
-import ReadingProgress from "@/app/components/ReadingProgress";
-import TableOfContentsPanel from "@/app/components/TableOfContentsPanel";
-import ConfettiCelebration from "@/app/components/ConfettiCelebration";
-import BackToTopButton from "@/app/components/BackToTopButton";
+import CodeBlockRenderer from "@/app/_components/CodeBlockRenderer";
+import ReadingProgress from "@/app/_components/ReadingProgress";
+import TableOfContentsPanel from "@/app/_components/TableOfContentsPanel";
+import ConfettiCelebration from "@/app/_components/ConfettiCelebration";
+import BackToTopButton from "@/app/_components/BackToTopButton";
 import { Heart } from "lucide-react";
-import BlogActions from "@/app/components/blogs-page/BlogActions";
+import BlogActions from "@/app/_components/blogs-page/BlogActions";
 import { Suspense } from "react";
+import CommentsSection from "@/app/_components/comments/CommentsSection";
+import LoadingSpinner from "@/app/_components/LoadingSpinner";
 // import LoadingSpinner from "@/app/components/LoadingSpinner";
 // import CommentSystem from "@/app/components/CommentSystem.";
 // import CommentSystem from "@/app/components/CommentSystem.";
@@ -399,15 +401,12 @@ export default async function BlogPostPage({ params }) {
         </div>
       </article>
 
-      {/* <Suspense
-        fallback={<LoadingSpinner size="md" text="Comments on their way..." />}
-        key={blogSlug}
-      > */}
-      <div className="max-w-4xl mx-auto">
-        {/* <CommentSystem blogSlug={blogSlug} /> */}
-        <h1 id="comment-section">Comment System</h1>
-      </div>
-      {/* </Suspense> */}
+      <Suspense
+        fallback={<LoadingSpinner size="lg" text="Loading Comments..." />}
+        key={post._id}
+      >
+        <CommentsSection postId={post._id} blogSlug={blogSlug} />
+      </Suspense>
     </div>
   );
 }

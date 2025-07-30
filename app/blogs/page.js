@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import { BlogsHero } from "../components/blogs-page/BlogsHero";
-import { BlogsSearch } from "../components/blogs-page/BlogsSearch";
-import { BlogsLoading } from "../components/blogs-page/BlogsLoading";
-import { BlogsList } from "../components/blogs-page/BlogsList";
+import { BlogsHero } from "../_components/blogs-page/BlogsHero";
+import { BlogsSearch } from "../_components/blogs-page/BlogsSearch";
+import { BlogsLoading } from "../_components/blogs-page/BlogsLoading";
+import { BlogsList } from "../_components/blogs-page/BlogsList";
 
 export const metadata = {
   title: "Blog - Insights & Stories",

@@ -1,8 +1,13 @@
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css"; // <-- fixed import
-import Navbar from "./components/Navbar";
+import Navbar from "./_components/Navbar";
 import { auth } from "./_lib/auth";
-import SessionProvider from "./components/SessionProvider";
+import SessionProvider from "./_components/SessionProvider";
+import NavbarShell from "./_components/NavbarShell";
+import NavbarClient from "./_components/NavbarClient";
+
+// import NavbarShell from "./components/NavbarShell";
+// import NavbarClient from "./components/NavbarClient";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
