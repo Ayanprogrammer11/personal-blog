@@ -1,5 +1,5 @@
 import { groq } from "next-sanity";
-import { client } from "../sanity/client";
+import { client } from "@/app/domains/content/services/sanity-client";
 
 const POSTS_PER_PAGE = 6;
 
