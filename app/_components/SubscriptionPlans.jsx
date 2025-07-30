@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Crown, Star, Zap, BookOpen, Users, LogOut } from "lucide-react";
 import { signOut } from "../_lib/auth";
-import { signOutAction } from "../_lib/actions/auth";
+import { signOutAction } from "@/app/features/user/actions/auth-actions";
 
 export default function SubscriptionPlans({ user }) {
   const [isYearly, setIsYearly] = useState(false);

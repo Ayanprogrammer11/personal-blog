@@ -4,7 +4,8 @@ import { auth } from "../../_lib/auth";
 import {
   getComments,
   getCommentCount,
-} from "../../_lib/actions/comment-actions";
+  createComment,
+} from "@/app/features/interaction/actions/comment-actions";
 
 import CommentsList from "./CommentsList";
 import { MessageCircle, Users } from "lucide-react";

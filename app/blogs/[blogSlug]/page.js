@@ -2,7 +2,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { builder, client } from "@/app/domains/content/services/sanity-client";
+import { builder, client } from "@/app/features/content/services/sanity-client";
 import CodeBlockRenderer from "@/app/_components/CodeBlockRenderer";
 import ReadingProgress from "@/app/_components/ReadingProgress";
 import TableOfContentsPanel from "@/app/_components/TableOfContentsPanel";

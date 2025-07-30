@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { Heart } from "lucide-react";
-import { toggleLike } from "@/app/_lib/actions/like-actions";
+import { toggleLike } from "@/app/features/interaction/actions/like-actions";
 
 export default function LikeButton({
   postId,

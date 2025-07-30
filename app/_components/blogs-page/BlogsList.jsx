@@ -1,5 +1,5 @@
 import { MessageCircle } from "lucide-react";
-import { getBlogs } from "../../_lib/data-blogs";
+import { getBlogs } from "@/app/features/content/blogs/blog-service";
 import { BlogCard } from "./BlogCard";
 import { BlogsPagination } from "./BlogsPagination";
 
