@@ -4,9 +4,8 @@ import { ReactNode } from "react";
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
-import { auth } from "./_lib/auth";
-import SessionProvider from "./_components/SessionProvider";
 import type { Metadata } from "next";
+import ConvexClientProvider from "./ConvexClientProvider";
 
 // Font setup
 const playfairDisplay = Playfair_Display({
@@ -69,9 +68,7 @@ type RootLayoutProps = {
   children: ReactNode;
 };
 
-export default async function RootLayout({ children }: RootLayoutProps) {
-  const session = await auth();
-
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
@@ -79,7 +76,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     >
       <body className="font-sans antialiased">
         <Navbar />
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );

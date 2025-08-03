@@ -25,8 +25,14 @@ type BlogsPageProps = {
   };
 };
 
-export default async function BlogsPage({ searchParams }: BlogsPageProps) {
-  const { search = "", category = "All", page = "1" } = searchParams;
+export default function BlogsPage({
+  searchParams,
+}: {
+  searchParams: { search?: string; category?: string; page?: string };
+}) {
+  const search = searchParams.search || "";
+  const category = searchParams.category || "All";
+  const page = searchParams.page || "1";
 
   return (
     <div className="mt-12">
