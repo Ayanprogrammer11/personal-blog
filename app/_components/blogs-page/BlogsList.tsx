@@ -3,12 +3,33 @@ import { getBlogs } from "../../_lib/data-blogs";
 import { BlogCard } from "./BlogCard";
 import { BlogsPagination } from "./BlogsPagination";
 
-export async function BlogsList({ search, category, page }) {
-  const { blogs, pagination } = await getBlogs({
-    search,
-    category,
-    page,
-  });
+type Blog = {
+  _id: string;
+  title: string;
+  content: string;
+  featured?: boolean;
+  // Add other properties as needed (e.g., slug, date, category)
+};
+
+type Pagination = {
+  currentPage: number;
+  totalPages: number;
+  totalPosts: number;
+};
+
+type BlogsListProps = {
+  search?: string;
+  category?: string;
+  page: number;
+};
+
+export async function BlogsList({ search, category, page }: BlogsListProps) {
+  const { blogs, pagination }: { blogs: Blog[]; pagination: Pagination } =
+    await getBlogs({
+      search,
+      category,
+      page,
+    });
 
   if (blogs.length === 0) {
     return (

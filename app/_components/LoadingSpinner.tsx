@@ -1,9 +1,15 @@
+type LoadingSpinnerProps = {
+  size?: "sm" | "md" | "lg" | "xl";
+  text?: string;
+  showText?: boolean;
+};
+
 export default function LoadingSpinner({
   size = "md",
   text = "Loading...",
   showText = true,
-}) {
-  const sizeClasses = {
+}: LoadingSpinnerProps) {
+  const sizeClasses: Record<"sm" | "md" | "lg" | "xl", string> = {
     sm: "w-4 h-4",
     md: "w-8 h-8",
     lg: "w-12 h-12",

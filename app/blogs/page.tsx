@@ -3,8 +3,9 @@ import { BlogsHero } from "../_components/blogs-page/BlogsHero";
 import { BlogsSearch } from "../_components/blogs-page/BlogsSearch";
 import { BlogsLoading } from "../_components/blogs-page/BlogsLoading";
 import { BlogsList } from "../_components/blogs-page/BlogsList";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog - Insights & Stories",
   description:
     "Discover thoughtful articles, insights, and stories crafted with care.",
@@ -16,8 +17,16 @@ export const metadata = {
   },
 };
 
-export default async function BlogsPage({ searchParams }) {
-  const { search, category, page = "1" } = await searchParams;
+type BlogsPageProps = {
+  searchParams: {
+    search?: string;
+    category?: string;
+    page?: string;
+  };
+};
+
+export default async function BlogsPage({ searchParams }: BlogsPageProps) {
+  const { search = "", category = "All", page = "1" } = searchParams;
 
   return (
     <div className="mt-12">

@@ -1,4 +1,3 @@
-// components/blogs/BlogsSearch.tsx
 "use client";
 
 import { useState, useTransition } from "react";

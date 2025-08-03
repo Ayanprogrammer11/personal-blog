@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Your Name - Personal Blog & Insights",
   description:
     "Discover thought-provoking articles, insights, and stories on technology, creativity, and life. Join thousands of readers who find value in authentic perspectives.",
@@ -149,7 +149,7 @@ export default function HomePage() {
               living.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/articles" className="btn-primary text-lg px-8 py-3">
+              <Link href="/blogs" className="btn-primary text-lg px-8 py-3">
                 Read Articles
               </Link>
               <Link
@@ -205,9 +205,7 @@ export default function HomePage() {
                 </div>
 
                 <h3 className="font-serif text-xl font-bold mb-3 group-hover:text-brand-600 transition-colors">
-                  <Link href={`/articles/${article.slug}`}>
-                    {article.title}
-                  </Link>
+                  <Link href={`/blogs/${article.slug}`}>{article.title}</Link>
                 </h3>
 
                 <p className="text-sage-600 mb-4 line-clamp-3">
@@ -223,7 +221,7 @@ export default function HomePage() {
                     })}
                   </time>
                   <Link
-                    href={`/articles/${article.slug}`}
+                    href={`/blogs/${article.slug}`}
                     className="text-brand-600 hover:text-brand-700 font-semibold transition-colors"
                   >
                     Read More →
@@ -234,7 +232,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/articles" className="btn-secondary text-lg px-8 py-3">
+            <Link href="/blogs" className="btn-secondary text-lg px-8 py-3">
               View All Articles
             </Link>
           </div>
@@ -258,7 +256,7 @@ export default function HomePage() {
             {categories.map((category, index) => (
               <Link
                 key={index}
-                href={`/categories/${category.name.toLowerCase()}`}
+                href={`#`}
                 className="card text-center group hover:scale-105 transition-all duration-300"
               >
                 <div className="text-4xl mb-4">{category.icon}</div>
@@ -301,7 +299,7 @@ export default function HomePage() {
 
               <p className="text-sm text-sage-500">
                 No spam, unsubscribe anytime. Read our{" "}
-                <Link href="/privacy" className="underline">
+                <Link href="#" className="underline">
                   privacy policy
                 </Link>
                 .
@@ -395,7 +393,7 @@ export default function HomePage() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/articles"
+                    href="/blogs"
                     className="text-cream-300 hover:text-brand-400 transition-colors"
                   >
                     Articles
@@ -403,7 +401,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="/categories"
+                    href="#"
                     className="text-cream-300 hover:text-brand-400 transition-colors"
                   >
                     Categories
@@ -419,7 +417,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="/contact"
+                    href="/#"
                     className="text-cream-300 hover:text-brand-400 transition-colors"
                   >
                     Contact
@@ -433,7 +431,7 @@ export default function HomePage() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/privacy"
+                    href="/#"
                     className="text-cream-300 hover:text-brand-400 transition-colors"
                   >
                     Privacy Policy
@@ -441,7 +439,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="/terms"
+                    href="/#"
                     className="text-cream-300 hover:text-brand-400 transition-colors"
                   >
                     Terms of Service

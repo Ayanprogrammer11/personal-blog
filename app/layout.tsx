@@ -1,26 +1,28 @@
+
+
+import { ReactNode } from "react";
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
-import "./globals.css"; // <-- fixed import
+import "./globals.css";
 import Navbar from "./_components/Navbar";
 import { auth } from "./_lib/auth";
 import SessionProvider from "./_components/SessionProvider";
-import NavbarShell from "./_components/NavbarShell";
-import NavbarClient from "./_components/NavbarClient";
+import type { Metadata } from "next";
 
-// import NavbarShell from "./components/NavbarShell";
-// import NavbarClient from "./components/NavbarClient";
-
+// Font setup
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
   weight: ["400", "500", "600", "700", "800", "900"],
 });
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
   weight: "variable",
 });
+
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -28,7 +30,8 @@ const jetBrainsMono = JetBrains_Mono({
   weight: "variable",
 });
 
-export const metadata = {
+// Metadata with proper type
+export const metadata: Metadata = {
   title: "Your Blog Name",
   description:
     "Personal blog about technology, life, and everything in between",
@@ -61,8 +64,14 @@ export const metadata = {
   },
 };
 
-export default async function RootLayout({ children }) {
+// Props type for layout component
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default async function RootLayout({ children }: RootLayoutProps) {
   const session = await auth();
+
   return (
     <html
       lang="en"
