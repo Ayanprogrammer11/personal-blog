@@ -14,9 +14,12 @@ export default function CodeBlockRenderer({ code, language }) {
         <pre className={`${className} p-4 rounded overflow-auto`} style={style}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
-              ))}
+              {line.map((token, key) => {
+                const { key: _, ...tokenProps } = getTokenProps({ token });
+                return (
+                  <span key={key} {...tokenProps} />
+                );
+              })}
             </div>
           ))}
         </pre>
