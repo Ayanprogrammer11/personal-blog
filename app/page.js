@@ -149,7 +149,7 @@ export default function HomePage() {
               living.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/articles" className="btn-primary text-lg px-8 py-3">
+              <Link href="/blogs" className="btn-primary text-lg px-8 py-3">
                 Read Articles
               </Link>
               <Link
